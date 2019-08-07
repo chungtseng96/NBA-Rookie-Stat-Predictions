@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for nba_stats project
+# Scrapy settings for college_stats project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'nba_stats'
+BOT_NAME = 'college_stats'
 
-SPIDER_MODULES = ['nba_stats.spiders']
-NEWSPIDER_MODULE = 'nba_stats.spiders'
+SPIDER_MODULES = ['college_stats.spiders']
+NEWSPIDER_MODULE = 'college_stats.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'nba_stats (+http://www.yourdomain.com)'
+#USER_AGENT = 'college_stats (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -47,13 +47,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'nba_stats.middlewares.NbaStatsSpiderMiddleware': 543,
+#    'college_stats.middlewares.CollegeStatsSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'nba_stats.middlewares.NbaStatsDownloaderMiddleware': 543,
+#    'college_stats.middlewares.CollegeStatsDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,31 +65,8 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-    #'nba_stats.pipelines.CsvExportPipline': 300,
+#    'college_stats.pipelines.CollegeStatsPipeline': 300,
 #}
-
-#FEED_EXPORTERS = {
-    #'csv': 'nba_stats.CsvExportPipeline.nba_statsCsvItemExporter',
-#}
-
-EXPORT_FORMAT = 'csv'
-EXPORT_FILE = 'nba_stats.csv'
-
-EXPORT_FIELDS = [
-        'player_name', 
-        'player_age', 
-        'player_gp', 
-        'player_total_3pa', 
-        'player_total_stl', 
-        'player_total_blk', 
-        'player_total_tov',  
-        'player_fgp', 
-        'player_3pp',
-        'player_ftp', 
-        'player_ppg', 
-        'player_rpg', 
-        'player_apg' 
-        ]
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

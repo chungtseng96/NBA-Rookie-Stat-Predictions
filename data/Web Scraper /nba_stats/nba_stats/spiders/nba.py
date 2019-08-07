@@ -10,7 +10,8 @@ class NbaSpider(scrapy.Spider):
     def parse(self, response):
         items = NbaStatsItem()
         
-        player_name = response.css('.right+ .left a').css('::text').extract()
+        for n in response.css('.right+ .left a').css('::text').extract():
+            items['player_name'][n] = n
         player_age = response.css('.left+ .right').css('::text').extract()
         player_gp = response.css('.right:nth-child(6)').css('::text').extract()
         player_total_3pa = response.css('.right:nth-child(11)').css('::text').extract()
@@ -24,28 +25,28 @@ class NbaSpider(scrapy.Spider):
         player_rpg = response.css('.right:nth-child(27)').css('::text').extract()
         player_apg = response.css('.right:nth-child(28)').css('::text').extract()
         
-        
-        items['player_name'] = player_name 
-        items['player_age'] = player_age 
-        items['player_gp'] = player_gp 
-        items['player_total_3pa'] = player_total_3pa 
-        items['player_total_stl'] = player_total_stl 
-        items['player_total_blk'] = player_total_blk 
-        items['player_total_tov'] = player_total_tov 
-        items['player_fgp'] = player_fgp 
-        items['player_3pp'] = player_3pp 
-        items['player_ftp'] = player_ftp 
-        items['player_ppg'] = player_ppg 
-        items['player_rpg'] = player_rpg 
-        items['player_apg'] = player_apg 
+        #for n in range(len(player_name)):
+            #items['player_name'][n] = player_name[n] 
+            items['player_age'][n] = player_age[n] 
+            items['player_gp'][n] = player_gp[n] 
+            items['player_total_3pa'][n] = player_total_3pa[n] 
+            items['player_total_stl'][n] = player_total_stl[n] 
+            items['player_total_blk'][n] = player_total_blk[n] 
+            items['player_total_tov'][n] = player_total_tov[n] 
+            items['player_fgp'][n] = player_fgp[n] 
+            items['player_3pp'][n] = player_3pp[n] 
+            items['player_ftp'][n] = player_ftp[n] 
+            items['player_ppg'][n] = player_ppg[n] 
+            items['player_rpg'][n] = player_rpg[n] 
+            items['player_apg'][n] = player_apg[n] 
         
         yield items
         
         next_page = 'https://www.basketball-reference.com/leagues/NBA_'+str(NbaSpider.year)+'_rookies.html#rookies::none'
         
-        if NbaSpider.year > 2008:
-            NbaSpider.year = NbaSpider.year - 1
-            yield response.follow(next_page, callback = self.parse)
+        #if NbaSpider.year > 2008:
+            #NbaSpider.year = NbaSpider.year - 1
+            #yield response.follow(next_page, callback = self.parse)
     
     
     
